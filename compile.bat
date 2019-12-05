@@ -1,0 +1,1 @@
+"C:\Dropbox\Autohotkey\Ahk2Exe_L\Ahk2Exe.exe" /in "RoughDraft-Mode.ahk" /icon "loudspeaker.ico"
