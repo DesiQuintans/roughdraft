@@ -37,9 +37,6 @@ build_hotkeys(97,  122, "+")       ; Uppercase letters (AHK wants + modifier)
 *NumpadDel::
 *Insert::
 *NumpadIns::
-^z::
-^+z::
-^y::
     Return
 
 TypeAtEnd:
