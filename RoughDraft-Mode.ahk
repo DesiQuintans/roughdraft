@@ -48,11 +48,11 @@ TypeAtEnd:
     ; for every block of letters that was typed consecutively. Therefore, avoid
     ; sending {End} unless the user has not been typing for some time. There is
     ; also a check for -1 because the script initialises with this setting.
-        Send {End}
     If (A_TimeSincePriorHotkey > 1000 OR A_TimeSincePriorHotkey == -1) {
+        SendInput {End}
     }
 
-    Send {%A_ThisHotkey%}
+    SendInput %A_ThisHotkey%
     Return
 
 
