@@ -49,9 +49,12 @@ TypeAtEnd:
         SendInput {End}
     }
 
-    SendInput %A_ThisHotkey%
+    if (SubStr(A_ThisHotkey, 1, 1) == "+") {
+        SendInput %A_ThisHotkey%
+    } else {
+        SendInput {%A_ThisHotkey%}
+    }
     Return
-
 
 
 ;============================ Supporting functions ============================
@@ -67,6 +70,7 @@ seq(from, to) {
 
     Return array
 }
+
 
 ; Builds hotkeys for sdakeys that fall between two unicode points (inclusive).
 ; https://autohotkey.com/board/topic/67948-detect-any-letter-key-press/#entry430046
