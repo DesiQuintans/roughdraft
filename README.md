@@ -10,6 +10,16 @@ When you lose the ability to delete or replace text, you are unable to edit
 yourself in the moment. All you can do is keep charging forward and writing new
 things.
 
+
+
+## Usage
+
+Download the newest release from the [Releases section](https://github.com/DesiQuintans/roughdraft/releases). You can put the files anywhere you like.
+
+Run `RoughDraft-Mode.exe`. If you would prefer to run an uncompiled script, then you can install [Autohotkey](https://www.autohotkey.com) and run `RoughDraft-Mode.ahk`.
+
+
+
 ## Acknowledgements
 
 - The loudspeaker tray icon is from
