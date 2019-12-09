@@ -70,7 +70,7 @@ Backspace::
     }
     Return
 
-^CtrlBreak::Suspend
+^PrintScreen::Suspend
 
 
 ;============================ Supporting functions ============================
