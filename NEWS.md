@@ -1,3 +1,13 @@
+# 2019-12-09
+
+- ADD - Ctrl+Pause toggles RoughtDraft-Mode on and off.
+- MOD - Instead of completely disallowing "edits" (backspace, control-backspace, or 
+  ctrl+z), allow one per second. This lets you undo typos but heavily discourages 
+  serious editing. Only the end of the current line/sentence can be edited.
+- FIX - The `+` key is correctly sent, rather than being interpreted as a Shift key.
+
+
+
 # 2019-12-06
 
 - FIX - Shifted keys and punctuation marks are sent correctly.

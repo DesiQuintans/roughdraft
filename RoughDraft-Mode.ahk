@@ -12,6 +12,10 @@
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
+;============================== Global variables ==============================
+
+; When was Backspace last pressed?
+last_edit := 0
 
 
 ;================================ Program logic ===============================
@@ -32,13 +36,6 @@ build_hotkeys(48,  57,  "Numpad")  ; Numpad numbers 0-9
 build_hotkeys(97,  122)            ; Lowercase letters
 build_hotkeys(97,  122, "+")       ; Uppercase letters (AHK wants + modifier)
 
-*Backspace::
-*Delete::
-*NumpadDel::
-*Insert::
-*NumpadIns::
-    Return
-
 TypeAtEnd:
     ; If {End} is sent between every keystroke, then the intelligent Undo of
     ; some programs is defeated and Undo happens for every letter instead of
@@ -49,12 +46,31 @@ TypeAtEnd:
         SendInput {End}
     }
 
-    if (SubStr(A_ThisHotkey, 1, 1) == "+") {
-        SendInput %A_ThisHotkey%
-    } else {
-        SendInput {%A_ThisHotkey%}
+    send_keystroke(A_ThisHotkey)
+    Return
+
+
+*Backspace::
+*Delete::
+*NumpadDel::
+*Insert::
+*NumpadIns::
+    Return
+
+
+Backspace::
+^Backspace::
+^z::
+    ; Allow one edit every 1 second, which should be enough to deal with typos.
+    if (A_TickCount - last_edit >= 1000) {
+        SendInput {End}
+        send_keystroke(A_ThisHotkey)
+
+        last_edit := A_TickCount
     }
     Return
+
+^CtrlBreak::Suspend
 
 
 ;============================ Supporting functions ============================
@@ -72,8 +88,8 @@ seq(from, to) {
 }
 
 
-; Builds hotkeys for sdakeys that fall between two unicode points (inclusive).
-; https://autohotkey.com/board/topic/67948-detect-any-letter-key-press/#entry430046
+; Builds hotkeys for keys that fall between two unicode points (inclusive).
+; autohotkey.com/board/topic/67948-detect-any-letter-key-press/#entry430046
 build_hotkeys(from, to, modifier = "", lab = "TypeAtEnd") {
     keys := seq(from, to)
 
@@ -81,5 +97,20 @@ build_hotkeys(from, to, modifier = "", lab = "TypeAtEnd") {
         key_name := modifier . Chr(keys[A_Index])
 
         Hotkey, %key_name%, %lab%
+    }
+}
+
+
+; Keys with modifiers and keys that are bare need to be sent in different ways.
+; Doing `Send {^Backspace}` actually performs `Ctrl+B` and then `ackspace`, so
+; it needs to be done as `Send ^{Backspace} to have the desired effect.
+send_keystroke(keyname) {
+    ; Note that this will only get `^` from `^+w`, so be warned.
+    modifier := SubStr(keyname, 1, 1)
+
+    if (StrLen(keyname) > 1 AND (modifier == "+" OR modifier == "^")) {
+        SendInput % modifier . "{" . SubStr(keyname, 2) . "}"
+    } else {
+        SendInput {%keyname%}
     }
 }
