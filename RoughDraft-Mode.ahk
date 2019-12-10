@@ -62,7 +62,7 @@ Backspace::
 ^Backspace::
 ^z::
     ; Allow one edit every 1 second, which should be enough to deal with typos.
-    if (A_TickCount - last_edit >= 1000) {
+    if (A_TickCount - last_edit >= 750) {
         SendInput {End}
         send_keystroke(A_ThisHotkey)
 

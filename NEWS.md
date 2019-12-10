@@ -1,5 +1,6 @@
 # 2019-12-10
 
+- MOD - Change edit delay to once every 750 ms (from 1000 ms).
 - MOD - Ctrl+Insert (not Ctrl+Pause) toggles RoughDraft-Mode on and off.
 - MOD - Change program icons in the tray.
 
