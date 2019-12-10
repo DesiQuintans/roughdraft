@@ -1,3 +1,9 @@
+# 2019-12-10
+
+- MOD - Ctrl+Insert (not Ctrl+Pause) toggles RoughDraft-Mode on and off.
+- MOD - Change program icons in the tray.
+
+
 # 2019-12-09
 
 - ADD - Ctrl+Pause toggles RoughtDraft-Mode on and off.

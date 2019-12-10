@@ -70,7 +70,7 @@ Backspace::
     }
     Return
 
-^PrintScreen::Suspend
+^Insert::Suspend
 
 
 ;============================ Supporting functions ============================

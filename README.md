@@ -18,7 +18,7 @@ Download the newest release from the [Releases section](https://github.com/DesiQ
 
 Run `RoughDraft-Mode.exe`. If you would prefer to run an uncompiled script, then you can install [Autohotkey](https://www.autohotkey.com) and run `RoughDraft-Mode.ahk`.
 
-Press `Ctrl + PrintScreen` to toggle RoughDraft-Mode on and off.
+Press `Ctrl + Insert` to toggle RoughDraft-Mode on and off.
 
 
 
