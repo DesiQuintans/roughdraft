@@ -17,6 +17,8 @@ SetWorkingDir %A_ScriptDir%
 ; When was Backspace last pressed?
 last_edit := 0
 
+Menu, Tray, Tip, Ctrl + Insert toggles RoughDraft-Mode
+
 
 ;================================ Program logic ===============================
 
@@ -71,7 +73,6 @@ Backspace::
     Return
 
 ^Insert::Suspend
-
 
 ;============================ Supporting functions ============================
 
